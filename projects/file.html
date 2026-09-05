@@ -195,6 +195,14 @@
             Check Integrity
         </button>
 
+        <button onclick="createBaseline()">
+            Create Baseline
+        </button>
+
+        <button onclick="compareBaseline()">
+            Compare with Baseline
+        </button>
+
         <button
             class="secondary"
             onclick="clearResults()"
@@ -219,6 +227,11 @@
             <li>Multiple file analysis</li>
             <li>File name and size reporting</li>
             <li>Integrity status reporting</li>
+            <li>Browser-based baseline creation</li>
+            <li>Baseline comparison</li>
+            <li>Modified file detection</li>
+            <li>New file detection</li>
+            <li>Unchanged file detection</li>
             <li>Client-side processing</li>
             <li>No files are uploaded to a server</li>
         </ul>
@@ -233,13 +246,34 @@
 
 <script>
 
+async function getFileHash(file) {
+
+    const buffer = await file.arrayBuffer();
+
+    const hashBuffer =
+        await crypto.subtle.digest("SHA-256", buffer);
+
+    const hashArray =
+        Array.from(new Uint8Array(hashBuffer));
+
+    return hashArray
+        .map(byte => byte.toString(16).padStart(2, "0"))
+        .join("");
+}
+
 async function calculateHashes() {
 
-    const fileInput = document.getElementById("fileInput");
-    const status = document.getElementById("status");
-    const results = document.getElementById("results");
+    const fileInput =
+        document.getElementById("fileInput");
 
-    const files = fileInput.files;
+    const status =
+        document.getElementById("status");
+
+    const results =
+        document.getElementById("results");
+
+    const files =
+        fileInput.files;
 
     if (files.length === 0) {
 
@@ -258,18 +292,8 @@ async function calculateHashes() {
 
         try {
 
-            const buffer = await file.arrayBuffer();
-
-            const hashBuffer =
-                await crypto.subtle.digest("SHA-256", buffer);
-
-            const hashArray =
-                Array.from(new Uint8Array(hashBuffer));
-
             const hashHex =
-                hashArray
-                    .map(byte => byte.toString(16).padStart(2, "0"))
-                    .join("");
+                await getFileHash(file);
 
             const sizeKB =
                 (file.size / 1024).toFixed(2);
@@ -277,7 +301,8 @@ async function calculateHashes() {
             const hashBox =
                 document.createElement("div");
 
-            hashBox.className = "hash-box";
+            hashBox.className =
+                "hash-box";
 
             hashBox.innerHTML = `
                 <div class="hash-name">
@@ -302,7 +327,8 @@ async function calculateHashes() {
             const errorBox =
                 document.createElement("div");
 
-            errorBox.className = "hash-box";
+            errorBox.className =
+                "hash-box";
 
             errorBox.innerHTML =
                 '<span class="danger">Unable to process file.</span>';
@@ -319,7 +345,244 @@ async function calculateHashes() {
         SHA-256 Hashing: Active
         <br>
         Files Analyzed: ${files.length}`;
+}
 
+async function createBaseline() {
+
+    const fileInput =
+        document.getElementById("fileInput");
+
+    const status =
+        document.getElementById("status");
+
+    const results =
+        document.getElementById("results");
+
+    const files =
+        fileInput.files;
+
+    if (files.length === 0) {
+
+        status.innerHTML =
+            '<span class="warning">Please select at least one file.</span>';
+
+        return;
+    }
+
+    status.innerHTML =
+        '<span class="warning">Creating baseline...</span>';
+
+    results.innerHTML = "";
+
+    const baseline = {};
+
+    try {
+
+        for (const file of files) {
+
+            const hashHex =
+                await getFileHash(file);
+
+            baseline[file.name] = {
+                size: file.size,
+                hash: hashHex
+            };
+        }
+
+        localStorage.setItem(
+            "fileIntegrityBaseline",
+            JSON.stringify(baseline)
+        );
+
+        status.innerHTML =
+            `<span class="normal">
+                Baseline created successfully.
+            </span>
+            <br>
+            Files Baseline: ${files.length}`;
+
+    } catch (error) {
+
+        status.innerHTML =
+            '<span class="danger">Unable to create baseline.</span>';
+    }
+}
+
+async function compareBaseline() {
+
+    const fileInput =
+        document.getElementById("fileInput");
+
+    const status =
+        document.getElementById("status");
+
+    const results =
+        document.getElementById("results");
+
+    const files =
+        fileInput.files;
+
+    if (files.length === 0) {
+
+        status.innerHTML =
+            '<span class="warning">Please select at least one file.</span>';
+
+        return;
+    }
+
+    const savedBaseline =
+        localStorage.getItem("fileIntegrityBaseline");
+
+    if (!savedBaseline) {
+
+        status.innerHTML =
+            '<span class="warning">No baseline found. Create a baseline first.</span>';
+
+        return;
+    }
+
+    let baseline;
+
+    try {
+
+        baseline =
+            JSON.parse(savedBaseline);
+
+    } catch (error) {
+
+        status.innerHTML =
+            '<span class="danger">Baseline data is invalid.</span>';
+
+        return;
+    }
+
+    status.innerHTML =
+        '<span class="warning">Comparing files with baseline...</span>';
+
+    results.innerHTML = "";
+
+    let modifiedCount = 0;
+    let unchangedCount = 0;
+    let newCount = 0;
+
+    try {
+
+        for (const file of files) {
+
+            const currentHash =
+                await getFileHash(file);
+
+            const savedFile =
+                baseline[file.name];
+
+            const resultBox =
+                document.createElement("div");
+
+            resultBox.className =
+                "hash-box";
+
+            if (!savedFile) {
+
+                newCount++;
+
+                resultBox.innerHTML = `
+                    <div class="hash-name">
+                        ${escapeHTML(file.name)}
+                    </div>
+
+                    <div class="danger">
+                        NEW FILE DETECTED
+                    </div>
+
+                    <div class="hash-value">
+                        Current SHA-256:
+                        ${currentHash}
+                    </div>
+                `;
+
+            } else if (
+                savedFile.hash !== currentHash ||
+                savedFile.size !== file.size
+            ) {
+
+                modifiedCount++;
+
+                resultBox.innerHTML = `
+                    <div class="hash-name">
+                        ${escapeHTML(file.name)}
+                    </div>
+
+                    <div class="danger">
+                        MODIFIED FILE DETECTED
+                    </div>
+
+                    <div class="hash-value">
+                        Baseline SHA-256:
+                        ${savedFile.hash}
+                        <br><br>
+                        Current SHA-256:
+                        ${currentHash}
+                    </div>
+                `;
+
+            } else {
+
+                unchangedCount++;
+
+                resultBox.innerHTML = `
+                    <div class="hash-name">
+                        ${escapeHTML(file.name)}
+                    </div>
+
+                    <div class="normal">
+                        FILE UNCHANGED
+                    </div>
+
+                    <div class="hash-value">
+                        SHA-256:
+                        ${currentHash}
+                    </div>
+                `;
+            }
+
+            results.appendChild(resultBox);
+        }
+
+        if (
+            modifiedCount === 0 &&
+            newCount === 0
+        ) {
+
+            status.innerHTML =
+                `<span class="normal">
+                    INTEGRITY STATUS: NORMAL
+                </span>
+                <br>
+                Unchanged Files: ${unchangedCount}
+                <br>
+                Modified Files: ${modifiedCount}
+                <br>
+                New Files: ${newCount}`;
+
+        } else {
+
+            status.innerHTML =
+                `<span class="danger">
+                    INTEGRITY ALERT: CHANGES DETECTED
+                </span>
+                <br>
+                Unchanged Files: ${unchangedCount}
+                <br>
+                Modified Files: ${modifiedCount}
+                <br>
+                New Files: ${newCount}`;
+        }
+
+    } catch (error) {
+
+        status.innerHTML =
+            '<span class="danger">Unable to complete integrity comparison.</span>';
+    }
 }
 
 function clearResults() {
@@ -330,7 +593,6 @@ function clearResults() {
 
     document.getElementById("status").innerHTML =
         "Select files and click <b>Check Integrity</b>.";
-
 }
 
 function escapeHTML(text) {
@@ -338,10 +600,10 @@ function escapeHTML(text) {
     const div =
         document.createElement("div");
 
-    div.textContent = text;
+    div.textContent =
+        text;
 
     return div.innerHTML;
-
 }
 
 </script>
