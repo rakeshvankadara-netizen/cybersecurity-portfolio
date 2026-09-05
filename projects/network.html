@@ -5,42 +5,194 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Network Traffic Analyzer</title>
+    <title>Network Traffic Analyzer | Rakesh Vankadara</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #0f172a;
+            color: #e2e8f0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 50px 25px;
+        }
+
+        .back-link {
+            color: #38bdf8;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back-link:hover {
+            color: #ffffff;
+        }
+
+        header {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        h1 {
+            font-size: 42px;
+            color: #38bdf8;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #94a3b8;
+            font-size: 18px;
+        }
+
+        .card {
+            margin: 25px 0;
+            padding: 30px;
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 12px;
+        }
+
+        h2 {
+            color: #38bdf8;
+            margin-top: 0;
+        }
+
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            background-color: #0ea5e9;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0284c7;
+        }
+
+        #result {
+            margin-top: 25px;
+            padding: 20px;
+            background-color: #020617;
+            border-radius: 8px;
+            border: 1px solid #334155;
+        }
+
+        .status {
+            color: #38bdf8;
+            font-weight: bold;
+        }
+
+        footer {
+            margin-top: 50px;
+            padding: 25px;
+            text-align: center;
+            background-color: #020617;
+            color: #94a3b8;
+        }
+    </style>
 </head>
 
 <body>
 
-    <h1>Network Traffic Analyzer</h1>
+    <div class="container">
 
-    <p>
-        Web-based demonstration of the Network Traffic Analyzer.
-    </p>
+        <a class="back-link" href="../index.html">
+            ← Back to Portfolio
+        </a>
 
-    <h2>Traffic Analysis</h2>
+        <header>
 
-    <p>
-        This tool analyzes network traffic information and displays
-        basic security indicators.
-    </p>
+            <h1>Network Traffic Analyzer</h1>
 
-    <button onclick="analyzeTraffic()">
-        ANALYZE TRAFFIC
-    </button>
+            <p class="subtitle">
+                Python-based cybersecurity network monitoring project
+            </p>
 
-    <p id="result">
-        Click Analyze Traffic to begin.
-    </p>
+        </header>
+
+        <div class="card">
+
+            <h2>About the Project</h2>
+
+            <p>
+                A Python-based cybersecurity tool that captures and analyzes
+                network traffic using Scapy. The project identifies protocols,
+                ports, traffic patterns, and possible security anomalies.
+            </p>
+
+            <p>
+                <strong>Technologies:</strong>
+                Python, Scapy, Tkinter
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <h2>Traffic Analysis</h2>
+
+            <p>
+                This web page provides a demonstration of the network
+                traffic analysis results.
+            </p>
+
+            <button onclick="analyzeTraffic()">
+                ANALYZE TRAFFIC
+            </button>
+
+            <div id="result">
+                Click Analyze Traffic to begin.
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <h2>Security Features</h2>
+
+            <ul>
+                <li>TCP traffic analysis</li>
+                <li>UDP traffic analysis</li>
+                <li>ICMP traffic analysis</li>
+                <li>Destination port analysis</li>
+                <li>Port scan detection</li>
+                <li>TCP SYN activity detection</li>
+                <li>Security alert logging</li>
+            </ul>
+
+        </div>
+
+    </div>
+
+    <footer>
+
+        <p>
+            © 2026 Rakesh Vankadara | Network Traffic Analyzer
+        </p>
+
+    </footer>
 
     <script>
 
         function analyzeTraffic() {
 
             document.getElementById("result").innerHTML =
-                "Traffic analysis completed.<br><br>" +
+                "<span class='status'>Traffic analysis completed.</span><br><br>" +
                 "TCP Packets: 249<br>" +
                 "UDP Packets: 1679<br>" +
                 "ICMP Packets: 0<br>" +
                 "Unique Destination Ports: 19";
+
         }
 
     </script>
