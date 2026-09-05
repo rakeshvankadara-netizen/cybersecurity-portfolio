@@ -8,6 +8,7 @@
     <title>Rakesh Vankadara | Cybersecurity Portfolio</title>
 
     <style>
+
         * {
             box-sizing: border-box;
         }
@@ -20,376 +21,751 @@
             margin: 0;
             font-family: Arial, sans-serif;
             line-height: 1.6;
-            background-color: #0f172a;
+            background: #020617;
             color: #e2e8f0;
         }
+
+        /* NAVIGATION */
 
         nav {
             position: sticky;
             top: 0;
             z-index: 1000;
-            padding: 18px 10px;
+            padding: 18px 5%;
             text-align: center;
-            background-color: #020617;
-            border-bottom: 1px solid #334155;
+            background: rgba(2, 6, 23, 0.96);
+            border-bottom: 1px solid #1e293b;
+            backdrop-filter: blur(8px);
         }
 
         nav a {
-            margin: 0 10px;
+            display: inline-block;
+            margin: 5px 12px;
             color: #38bdf8;
             text-decoration: none;
             font-weight: bold;
+            transition: 0.3s;
         }
 
         nav a:hover {
             color: #ffffff;
         }
 
+        /* MAIN CONTAINER */
+
         .container {
-            max-width: 1000px;
+            width: 90%;
+            max-width: 1100px;
             margin: auto;
-            padding: 50px 25px;
+            padding: 40px 0;
         }
+
+        /* HERO */
 
         .hero {
             text-align: center;
-            padding: 70px 20px;
+            padding: 100px 20px 90px;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            margin-bottom: 20px;
+            border: 1px solid #0ea5e9;
+            border-radius: 30px;
+            color: #38bdf8;
+            background: #0f172a;
+            font-size: 14px;
+            font-weight: bold;
         }
 
         .hero h1 {
             margin: 0;
-            font-size: 48px;
+            font-size: 52px;
             color: #38bdf8;
         }
 
         .subtitle {
-            margin-top: 10px;
-            font-size: 28px;
+            margin-top: 12px;
+            font-size: 30px;
             color: #ffffff;
+            font-weight: bold;
         }
 
         .role {
+            max-width: 700px;
+            margin: 18px auto;
             font-size: 18px;
             color: #94a3b8;
         }
 
+        .hero-buttons {
+            margin-top: 30px;
+        }
+
+        /* BUTTONS */
+
+        .button {
+            display: inline-block;
+            margin: 8px 6px;
+            padding: 12px 20px;
+            background: #0ea5e9;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            border: 1px solid #0ea5e9;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            background: #0284c7;
+            border-color: #0284c7;
+            transform: translateY(-2px);
+        }
+
+        .outline-button {
+            background: transparent;
+            color: #38bdf8;
+        }
+
+        .outline-button:hover {
+            background: #0f172a;
+            color: #ffffff;
+        }
+
+        .github-button {
+            background: #334155;
+            border-color: #475569;
+        }
+
+        .github-button:hover {
+            background: #475569;
+        }
+
+        /* SECTIONS */
+
         section {
-            margin-bottom: 60px;
+            margin-bottom: 70px;
+            scroll-margin-top: 90px;
         }
 
         h2 {
-            margin-bottom: 20px;
-            padding-bottom: 10px;
+            margin-bottom: 25px;
+            padding-bottom: 12px;
             color: #38bdf8;
-            border-bottom: 2px solid #334155;
+            border-bottom: 2px solid #1e293b;
+            font-size: 30px;
         }
 
         h3 {
             color: #ffffff;
-            margin-top: 30px;
+            margin-top: 0;
+            font-size: 22px;
         }
+
+        /* CARDS */
 
         .card {
             margin: 20px 0;
-            padding: 25px;
-            background-color: #1e293b;
-            border: 1px solid #334155;
-            border-radius: 12px;
+            padding: 28px;
+            background: #0f172a;
+            border: 1px solid #1e293b;
+            border-radius: 14px;
+            transition: 0.3s;
         }
 
         .card:hover {
             border-color: #38bdf8;
+            transform: translateY(-3px);
+        }
+
+        .card p {
+            color: #cbd5e1;
+        }
+
+        /* ABOUT */
+
+        .about-card {
+            background: linear-gradient(
+                135deg,
+                #0f172a,
+                #111827
+            );
+        }
+
+        /* SKILLS */
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .skill {
+            padding: 18px;
+            text-align: center;
+            background: #0f172a;
+            border: 1px solid #1e293b;
+            border-radius: 10px;
+            color: #cbd5e1;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .skill:hover {
+            border-color: #38bdf8;
+            color: #38bdf8;
+            transform: translateY(-3px);
+        }
+
+        /* PROJECTS */
+
+        .project-card {
+            position: relative;
+            overflow: hidden;
         }
 
         .project-number {
             color: #38bdf8;
+            font-size: 15px;
         }
 
-        .button {
+        .project-title {
+            margin-top: 8px;
+        }
+
+        .project-description {
+            color: #94a3b8;
+        }
+
+        .technology {
             display: inline-block;
-            margin: 8px 8px 8px 0;
-            padding: 10px 16px;
-            background-color: #0ea5e9;
+            margin: 4px 5px 4px 0;
+            padding: 5px 10px;
+            background: #1e293b;
+            border-radius: 5px;
+            color: #7dd3fc;
+            font-size: 13px;
+        }
+
+        /* CERTIFICATION / EDUCATION */
+
+        .info-card {
+            border-left: 4px solid #38bdf8;
+        }
+
+        .info-title {
             color: #ffffff;
-            text-decoration: none;
-            border-radius: 6px;
+            font-size: 20px;
             font-weight: bold;
         }
 
-        .button:hover {
-            background-color: #0284c7;
+        .info-description {
+            color: #94a3b8;
         }
 
-        .github-button {
-            background-color: #334155;
-        }
-
-        .github-button:hover {
-            background-color: #475569;
-        }
-
-        ul {
-            padding-left: 25px;
-        }
-
-        li {
-            margin-bottom: 8px;
-        }
+        /* CONTACT */
 
         .contact-box {
             text-align: center;
-            padding: 30px;
-            background-color: #1e293b;
-            border-radius: 12px;
-            border: 1px solid #334155;
+            padding: 40px 25px;
+            background: #0f172a;
+            border-radius: 14px;
+            border: 1px solid #1e293b;
+        }
+
+        .contact-box p {
+            color: #cbd5e1;
         }
 
         .contact-box a {
             color: #38bdf8;
+            text-decoration: none;
         }
+
+        .contact-box a:hover {
+            color: #ffffff;
+        }
+
+        /* FOOTER */
 
         footer {
-            padding: 25px;
+            padding: 30px;
             text-align: center;
-            background-color: #020617;
-            color: #94a3b8;
+            background: #020617;
+            color: #64748b;
+            border-top: 1px solid #1e293b;
         }
 
-        @media (max-width: 700px) {
+        /* MOBILE */
 
-            nav a {
-                display: inline-block;
-                margin: 5px;
+        @media (max-width: 800px) {
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
 
             .hero h1 {
-                font-size: 36px;
+                font-size: 40px;
             }
 
             .subtitle {
-                font-size: 22px;
+                font-size: 24px;
             }
         }
+
+        @media (max-width: 500px) {
+
+            nav a {
+                margin: 4px 7px;
+                font-size: 14px;
+            }
+
+            .container {
+                width: 92%;
+            }
+
+            .hero {
+                padding: 70px 10px;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .subtitle {
+                font-size: 21px;
+            }
+
+            .role {
+                font-size: 16px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                padding: 22px;
+            }
+
+            h2 {
+                font-size: 26px;
+            }
+        }
+
     </style>
+
 </head>
 
 <body>
 
+    <!-- NAVIGATION -->
+
     <nav>
+
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
         <a href="#certifications">Certifications</a>
         <a href="#education">Education</a>
         <a href="#contact">Contact</a>
+
     </nav>
+
+
+    <!-- MAIN CONTENT -->
 
     <div class="container">
 
+
+        <!-- HERO SECTION -->
+
         <div class="hero">
 
-            <h1>Rakesh Vankadara</h1>
+            <div class="hero-badge">
+                🛡️ CYBERSECURITY PORTFOLIO
+            </div>
+
+            <h1>
+                Rakesh Vankadara
+            </h1>
 
             <div class="subtitle">
-                Cybersecurity Portfolio
+                Cybersecurity Student
             </div>
 
             <p class="role">
-                Cybersecurity Student & Aspiring Security Professional
+                Aspiring Security Professional focused on
+                network security, security monitoring,
+                password security, and file integrity.
             </p>
+
+            <div class="hero-buttons">
+
+                <a class="button" href="#projects">
+                    🚀 View Projects
+                </a>
+
+                <a class="button outline-button" href="#contact">
+                    📧 Contact Me
+                </a>
+
+            </div>
 
         </div>
 
+
+        <!-- ABOUT -->
+
         <section id="about">
 
-            <h2>About Me</h2>
+            <h2>
+                About Me
+            </h2>
 
-            <p>
-                I am a B.Tech cybersecurity student with a strong interest in
-                network security, security monitoring, password security, and
-                file integrity. I enjoy building practical cybersecurity tools
-                using Python and applying security concepts to real-world
-                problems.
-            </p>
+            <div class="card about-card">
 
-            <p>
-                My projects include a Network Traffic Analyzer, Password Security
-                Analyzer, and File Integrity Monitor. Through these projects,
-                I have developed hands-on experience with Python, Scapy, Tkinter,
-                SHA-256 hashing, security analysis, and GitHub.
-            </p>
+                <p>
+                    I am a B.Tech cybersecurity student with a strong
+                    interest in network security, security monitoring,
+                    password security, and file integrity.
+                </p>
 
-            <p>
-                I am continuously learning and looking for opportunities to
-                develop my technical skills and gain practical experience in
-                cybersecurity.
-            </p>
+                <p>
+                    I enjoy building practical cybersecurity tools
+                    using Python and applying security concepts to
+                    real-world problems.
+                </p>
+
+                <p>
+                    My projects include a Network Traffic Analyzer,
+                    Password Security Analyzer, and File Integrity
+                    Monitor. Through these projects, I have developed
+                    hands-on experience with Python, Scapy, Tkinter,
+                    SHA-256 hashing, security analysis, and GitHub.
+                </p>
+
+                <p>
+                    I am continuously learning and looking for
+                    opportunities to develop my technical skills
+                    and gain practical experience in cybersecurity.
+                </p>
+
+            </div>
 
         </section>
+
+
+        <!-- SKILLS -->
 
         <section id="skills">
 
-            <h2>Skills</h2>
+            <h2>
+                Technical Skills
+            </h2>
 
-            <div class="card">
+            <div class="skills-grid">
 
-                <ul>
-                    <li>Python</li>
-                    <li>Network Security</li>
-                    <li>Cybersecurity Fundamentals</li>
-                    <li>Password Security</li>
-                    <li>File Integrity Monitoring</li>
-                    <li>SHA-256 Hashing</li>
-                    <li>Git & GitHub</li>
-                    <li>GUI Development with Tkinter</li>
-                </ul>
+                <div class="skill">
+                    Python
+                </div>
+
+                <div class="skill">
+                    Network Security
+                </div>
+
+                <div class="skill">
+                    Cybersecurity Fundamentals
+                </div>
+
+                <div class="skill">
+                    Password Security
+                </div>
+
+                <div class="skill">
+                    File Integrity Monitoring
+                </div>
+
+                <div class="skill">
+                    SHA-256 Hashing
+                </div>
+
+                <div class="skill">
+                    Git & GitHub
+                </div>
+
+                <div class="skill">
+                    Tkinter GUI
+                </div>
 
             </div>
 
         </section>
+
+
+        <!-- PROJECTS -->
 
         <section id="projects">
 
-            <h2>Projects</h2>
+            <h2>
+                Cybersecurity Projects
+            </h2>
 
             <p>
-                Practical cybersecurity projects developed using Python
-                and focused on security monitoring and analysis.
+                Practical cybersecurity projects developed using
+                Python and focused on security monitoring, analysis,
+                password security, and file integrity.
             </p>
 
-            <div class="card">
 
-                <h3>
-                    <span class="project-number">1.</span>
-                    Network Traffic Analyzer
+            <!-- PROJECT 1 -->
+
+            <div class="card project-card">
+
+                <div class="project-number">
+                    PROJECT 01
+                </div>
+
+                <h3 class="project-title">
+                    🌐 Network Traffic Analyzer
                 </h3>
 
                 <p>
-                    <strong>Technologies:</strong>
-                    Python, Scapy, Tkinter
+                    A Python-based cybersecurity tool that captures
+                    and analyzes network traffic, identifies protocols
+                    and ports, and detects possible security anomalies
+                    such as port scans and TCP SYN activity.
                 </p>
 
-                <p>
-                    A Python-based cybersecurity tool that captures and analyzes
-                    network traffic, identifies protocols and ports, and detects
-                    possible security anomalies such as port scans and TCP SYN activity.
-                </p>
+                <div>
 
-                <a class="button" href="projects/network.html">
-                    🌐 Open Project
-                </a>
+                    <span class="technology">
+                        Python
+                    </span>
 
-                <a class="button github-button"
-                    href="https://github.com/rakeshvankadara-netizen/network-traffic-analyzer">
-                    View GitHub
-                </a>
+                    <span class="technology">
+                        Scapy
+                    </span>
+
+                    <span class="technology">
+                        Tkinter
+                    </span>
+
+                </div>
+
+                <div>
+
+                    <a class="button"
+                       href="projects/network.html">
+                        🌐 Live Project
+                    </a>
+
+                    <a class="button github-button"
+                       href="https://github.com/rakeshvankadara-netizen/network-traffic-analyzer"
+                       target="_blank">
+                        GitHub
+                    </a>
+
+                </div>
 
             </div>
 
-            <div class="card">
 
-                <h3>
-                    <span class="project-number">2.</span>
-                    Password Security Analyzer
+            <!-- PROJECT 2 -->
+
+            <div class="card project-card">
+
+                <div class="project-number">
+                    PROJECT 02
+                </div>
+
+                <h3 class="project-title">
+                    🔐 Password Security Analyzer
                 </h3>
 
                 <p>
-                    <strong>Technologies:</strong>
-                    Python, Tkinter
+                    A Python and Tkinter application that evaluates
+                    password strength using length, uppercase,
+                    lowercase, numbers, special characters,
+                    common-password detection, and other security
+                    checks.
                 </p>
 
-                <p>
-                    A Python and Tkinter application that evaluates password
-                    strength using length, uppercase, lowercase, numbers,
-                    special characters, common-password detection, and other
-                    security checks.
-                </p>
+                <div>
 
-                <a class="button" href="projects/password.html">
-                    🌐 Open Project
-                </a>
+                    <span class="technology">
+                        Python
+                    </span>
 
-                <a class="button github-button"
-                    href="https://github.com/rakeshvankadara-netizen/password-security-analyzer">
-                    View GitHub
-                </a>
+                    <span class="technology">
+                        Tkinter
+                    </span>
+
+                    <span class="technology">
+                        Password Security
+                    </span>
+
+                </div>
+
+                <div>
+
+                    <a class="button"
+                       href="projects/password.html">
+                        🌐 Live Project
+                    </a>
+
+                    <a class="button github-button"
+                       href="https://github.com/rakeshvankadara-netizen/password-security-analyzer"
+                       target="_blank">
+                        GitHub
+                    </a>
+
+                </div>
 
             </div>
 
-            <div class="card">
 
-                <h3>
-                    <span class="project-number">3.</span>
-                    File Integrity Monitor
+            <!-- PROJECT 3 -->
+
+            <div class="card project-card">
+
+                <div class="project-number">
+                    PROJECT 03
+                </div>
+
+                <h3 class="project-title">
+                    🛡️ File Integrity Monitor
                 </h3>
 
                 <p>
-                    <strong>Technologies:</strong>
-                    Python, Tkinter, SHA-256, JSON
+                    A Python-based security application that uses
+                    SHA-256 hashing to create file baselines and
+                    detect modified, new, and deleted files.
                 </p>
 
-                <p>
-                    A Python-based security application that uses SHA-256 hashing
-                    to create file baselines and detect modified, new, and deleted files.
-                </p>
+                <div>
 
-                <a class="button" href="projects/file.html">
-                    🌐 Open Project
-                </a>
+                    <span class="technology">
+                        Python
+                    </span>
 
-                <a class="button github-button"
-                    href="https://github.com/rakeshvankadara-netizen/file-integrity-monitor">
-                    View GitHub
-                </a>
+                    <span class="technology">
+                        Tkinter
+                    </span>
+
+                    <span class="technology">
+                        SHA-256
+                    </span>
+
+                    <span class="technology">
+                        JSON
+                    </span>
+
+                </div>
+
+                <div>
+
+                    <a class="button"
+                       href="projects/file.html">
+                        🌐 Live Project
+                    </a>
+
+                    <a class="button github-button"
+                       href="https://github.com/rakeshvankadara-netizen/file-integrity-monitor"
+                       target="_blank">
+                        GitHub
+                    </a>
+
+                </div>
 
             </div>
 
         </section>
+
+
+        <!-- CERTIFICATIONS -->
 
         <section id="certifications">
 
-            <h2>Certifications</h2>
+            <h2>
+                Certifications
+            </h2>
 
-            <div class="card">
+            <div class="card info-card">
 
-                <p>
-                    Introduction to Cybersecurity
+                <div class="info-title">
+                    📜 Introduction to Cybersecurity
+                </div>
+
+                <p class="info-description">
+                    Cybersecurity fundamentals certification.
                 </p>
 
             </div>
 
         </section>
+
+
+        <!-- EDUCATION -->
 
         <section id="education">
 
-            <h2>Education</h2>
+            <h2>
+                Education
+            </h2>
 
-            <div class="card">
+            <div class="card info-card">
 
-                <p>
-                    Btech 3year kalasalingam university
+                <div class="info-title">
+                    🎓 B.Tech — 3rd Year
+                </div>
+
+                <p class="info-description">
+                    Kalasalingam University
                 </p>
 
             </div>
 
         </section>
 
+
+        <!-- CONTACT -->
+
         <section id="contact">
 
-            <h2>Contact</h2>
+            <h2>
+                Contact
+            </h2>
 
             <div class="contact-box">
 
                 <p>
+                    Interested in cybersecurity projects,
+                    collaboration, or opportunities?
+                </p>
+
+                <p>
                     GitHub:
-                    <a href="https://github.com/rakeshvankadara-netizen">
+                    <br>
+
+                    <a href="https://github.com/rakeshvankadara-netizen"
+                       target="_blank">
                         github.com/rakeshvankadara-netizen
                     </a>
+
                 </p>
 
                 <p>
                     Email:
-                    rakeshvankadara@gmail.com
+                    <br>
+
+                    <a href="mailto:rakeshvankadara@gmail.com">
+                        rakeshvankadara@gmail.com
+                    </a>
+
                 </p>
 
             </div>
@@ -397,6 +773,9 @@
         </section>
 
     </div>
+
+
+    <!-- FOOTER -->
 
     <footer>
 
