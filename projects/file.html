@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>File Integrity Monitor | Rakesh Vankadara</title>
+    <title>File Integrity Monitor | Cybersecurity Portfolio</title>
 
     <style>
         * {
@@ -15,99 +14,149 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #0f172a;
+            background: #0f172a;
             color: #e2e8f0;
-            line-height: 1.6;
         }
 
-        .container {
-            max-width: 900px;
-            margin: auto;
-            padding: 50px 25px;
+        nav {
+            background: #020617;
+            padding: 18px 8%;
+            border-bottom: 1px solid #1e293b;
         }
 
-        .back-link {
+        nav a {
             color: #38bdf8;
             text-decoration: none;
             font-weight: bold;
         }
 
-        .back-link:hover {
-            color: #ffffff;
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: auto;
+            padding: 50px 0;
         }
 
-        header {
+        .hero {
             text-align: center;
-            padding: 50px 20px;
+            margin-bottom: 40px;
         }
 
-        h1 {
-            font-size: 42px;
+        .hero h1 {
             color: #38bdf8;
-            margin-bottom: 10px;
+            font-size: 38px;
+            margin-bottom: 12px;
         }
 
-        .subtitle {
+        .hero p {
             color: #94a3b8;
-            font-size: 18px;
+            font-size: 17px;
         }
 
         .card {
-            margin: 25px 0;
-            padding: 30px;
-            background-color: #1e293b;
+            background: #1e293b;
             border: 1px solid #334155;
             border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
         }
 
-        h2 {
+        .card h2 {
             color: #38bdf8;
             margin-top: 0;
         }
 
+        input[type="file"] {
+            width: 100%;
+            padding: 14px;
+            background: #0f172a;
+            color: #e2e8f0;
+            border: 1px solid #475569;
+            border-radius: 8px;
+            margin-bottom: 18px;
+        }
+
         button {
-            padding: 12px 20px;
+            background: #38bdf8;
+            color: #020617;
             border: none;
-            border-radius: 6px;
-            background-color: #0ea5e9;
-            color: #ffffff;
+            padding: 12px 22px;
+            border-radius: 8px;
             font-weight: bold;
             cursor: pointer;
+            margin-right: 8px;
         }
 
         button:hover {
-            background-color: #0284c7;
+            opacity: 0.85;
         }
 
-        #result {
-            margin-top: 25px;
-            padding: 20px;
-            background-color: #020617;
-            border-radius: 8px;
-            border: 1px solid #334155;
+        .secondary {
+            background: #475569;
+            color: white;
         }
 
         .status {
+            padding: 18px;
+            background: #020617;
+            border-radius: 8px;
+            margin-top: 20px;
+            line-height: 1.7;
+        }
+
+        .hash-box {
+            margin-top: 15px;
+            padding: 15px;
+            background: #020617;
+            border-radius: 8px;
+            overflow-wrap: anywhere;
+        }
+
+        .hash-name {
             color: #38bdf8;
             font-weight: bold;
         }
 
+        .hash-value {
+            color: #cbd5e1;
+            font-family: Consolas, monospace;
+            font-size: 13px;
+        }
+
+        .normal {
+            color: #4ade80;
+            font-weight: bold;
+        }
+
+        .warning {
+            color: #facc15;
+            font-weight: bold;
+        }
+
+        .danger {
+            color: #f87171;
+            font-weight: bold;
+        }
+
+        ul {
+            line-height: 1.9;
+            color: #cbd5e1;
+        }
+
         footer {
-            margin-top: 50px;
-            padding: 25px;
             text-align: center;
-            background-color: #020617;
-            color: #94a3b8;
+            padding: 30px;
+            color: #64748b;
+            border-top: 1px solid #1e293b;
         }
 
         @media (max-width: 600px) {
-
-            h1 {
-                font-size: 34px;
+            .hero h1 {
+                font-size: 30px;
             }
 
-            .container {
-                padding: 35px 18px;
+            button {
+                margin-bottom: 10px;
             }
         }
     </style>
@@ -115,99 +164,187 @@
 
 <body>
 
-    <div class="container">
+<nav>
+    <a href="../index.html">← Back to Portfolio</a>
+</nav>
 
-        <a class="back-link" href="../index.html">
-            ← Back to Portfolio
-        </a>
+<div class="container">
 
-        <header>
+    <section class="hero">
+        <h1>File Integrity Monitor</h1>
+        <p>
+            Real browser-based SHA-256 file integrity analysis
+        </p>
+    </section>
 
-            <h1>File Integrity Monitor</h1>
+    <section class="card">
 
-            <p class="subtitle">
-                Python-based file integrity monitoring project
-            </p>
-
-        </header>
-
-        <div class="card">
-
-            <h2>About the Project</h2>
-
-            <p>
-                A Python-based security application that uses SHA-256
-                hashing to create file baselines and detect modified,
-                new, and deleted files.
-            </p>
-
-            <p>
-                <strong>Technologies:</strong>
-                Python, Tkinter, SHA-256, JSON
-            </p>
-
-        </div>
-
-        <div class="card">
-
-            <h2>File Integrity Analysis</h2>
-
-            <p>
-                This web page provides a demonstration of the file
-                integrity monitoring results.
-            </p>
-
-            <button onclick="checkIntegrity()">
-                CHECK INTEGRITY
-            </button>
-
-            <div id="result">
-                Click Check Integrity to begin.
-            </div>
-
-        </div>
-
-        <div class="card">
-
-            <h2>Security Features</h2>
-
-            <ul>
-                <li>SHA-256 file hashing</li>
-                <li>File baseline creation</li>
-                <li>Modified file detection</li>
-                <li>New file detection</li>
-                <li>Deleted file detection</li>
-                <li>Integrity status reporting</li>
-                <li>Security logging</li>
-            </ul>
-
-        </div>
-
-    </div>
-
-    <footer>
+        <h2>Integrity Scanner</h2>
 
         <p>
-            © 2026 Rakesh Vankadara | File Integrity Monitor
+            Select one or more files to calculate their SHA-256 hashes.
         </p>
 
-    </footer>
+        <input
+            type="file"
+            id="fileInput"
+            multiple
+        >
 
-    <script>
+        <button onclick="calculateHashes()">
+            Check Integrity
+        </button>
 
-        function checkIntegrity() {
+        <button
+            class="secondary"
+            onclick="clearResults()"
+        >
+            Clear
+        </button>
 
-            document.getElementById("result").innerHTML =
-                "<span class='status'>Integrity check completed.</span><br><br>" +
-                "SHA-256 Hashing: Active<br>" +
-                "Modified Files: 0<br>" +
-                "New Files: 0<br>" +
-                "Deleted Files: 0<br><br>" +
-                "<span class='status'>INTEGRITY STATUS: NORMAL</span>";
+        <div id="status" class="status">
+            Select files and click <b>Check Integrity</b>.
+        </div>
+
+        <div id="results"></div>
+
+    </section>
+
+    <section class="card">
+
+        <h2>Security Features</h2>
+
+        <ul>
+            <li>Real SHA-256 file hashing</li>
+            <li>Multiple file analysis</li>
+            <li>File name and size reporting</li>
+            <li>Integrity status reporting</li>
+            <li>Client-side processing</li>
+            <li>No files are uploaded to a server</li>
+        </ul>
+
+    </section>
+
+</div>
+
+<footer>
+    © 2026 Rakesh Vankadara | Cybersecurity Portfolio
+</footer>
+
+<script>
+
+async function calculateHashes() {
+
+    const fileInput = document.getElementById("fileInput");
+    const status = document.getElementById("status");
+    const results = document.getElementById("results");
+
+    const files = fileInput.files;
+
+    if (files.length === 0) {
+
+        status.innerHTML =
+            '<span class="warning">Please select at least one file.</span>';
+
+        return;
+    }
+
+    status.innerHTML =
+        '<span class="warning">Calculating SHA-256 hashes...</span>';
+
+    results.innerHTML = "";
+
+    for (const file of files) {
+
+        try {
+
+            const buffer = await file.arrayBuffer();
+
+            const hashBuffer =
+                await crypto.subtle.digest("SHA-256", buffer);
+
+            const hashArray =
+                Array.from(new Uint8Array(hashBuffer));
+
+            const hashHex =
+                hashArray
+                    .map(byte => byte.toString(16).padStart(2, "0"))
+                    .join("");
+
+            const sizeKB =
+                (file.size / 1024).toFixed(2);
+
+            const hashBox =
+                document.createElement("div");
+
+            hashBox.className = "hash-box";
+
+            hashBox.innerHTML = `
+                <div class="hash-name">
+                    ${escapeHTML(file.name)}
+                </div>
+
+                <div>
+                    File Size:
+                    ${sizeKB} KB
+                </div>
+
+                <div class="hash-value">
+                    SHA-256:
+                    ${hashHex}
+                </div>
+            `;
+
+            results.appendChild(hashBox);
+
+        } catch (error) {
+
+            const errorBox =
+                document.createElement("div");
+
+            errorBox.className = "hash-box";
+
+            errorBox.innerHTML =
+                '<span class="danger">Unable to process file.</span>';
+
+            results.appendChild(errorBox);
         }
+    }
 
-    </script>
+    status.innerHTML =
+        `<span class="normal">
+            Integrity check completed successfully.
+        </span>
+        <br>
+        SHA-256 Hashing: Active
+        <br>
+        Files Analyzed: ${files.length}`;
+
+}
+
+function clearResults() {
+
+    document.getElementById("fileInput").value = "";
+
+    document.getElementById("results").innerHTML = "";
+
+    document.getElementById("status").innerHTML =
+        "Select files and click <b>Check Integrity</b>.";
+
+}
+
+function escapeHTML(text) {
+
+    const div =
+        document.createElement("div");
+
+    div.textContent = text;
+
+    return div.innerHTML;
+
+}
+
+</script>
 
 </body>
-
 </html>
