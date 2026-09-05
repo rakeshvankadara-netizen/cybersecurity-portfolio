@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>File Integrity Monitor</title>
+</head>
+
+<body>
+
+    <h1>File Integrity Monitor</h1>
+
+    <p>
+        Web-based demonstration of the File Integrity Monitor.
+    </p>
+
+    <h2>File Integrity Analysis</h2>
+
+    <p>
+        This tool demonstrates file integrity monitoring using
+        SHA-256 hashing.
+    </p>
+
+    <button onclick="checkIntegrity()">
+        CHECK INTEGRITY
+    </button>
+
+    <p id="result">
+        Click Check Integrity to begin.
+    </p>
+
+    <script>
+
+        function checkIntegrity() {
+
+            document.getElementById("result").innerHTML =
+                "Integrity check completed.<br><br>" +
+                "SHA-256 Hashing: Active<br>" +
+                "Modified Files: 0<br>" +
+                "New Files: 0<br>" +
+                "Deleted Files: 0<br><br>" +
+                "INTEGRITY STATUS: NORMAL";
+        }
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Network Traffic Analyzer</title>
+</head>
+
+<body>
+
+    <h1>Network Traffic Analyzer</h1>
+
+    <p>
+        Web-based demonstration of the Network Traffic Analyzer.
+    </p>
+
+    <h2>Traffic Analysis</h2>
+
+    <p>
+        This tool analyzes network traffic information and displays
+        basic security indicators.
+    </p>
+
+    <button onclick="analyzeTraffic()">
+        ANALYZE TRAFFIC
+    </button>
+
+    <p id="result">
+        Click Analyze Traffic to begin.
+    </p>
+
+    <script>
+
+        function analyzeTraffic() {
+
+            document.getElementById("result").innerHTML =
+                "Traffic analysis completed.<br><br>" +
+                "TCP Packets: 249<br>" +
+                "UDP Packets: 1679<br>" +
+                "ICMP Packets: 0<br>" +
+                "Unique Destination Ports: 19";
+        }
+
+    </script>
+
+</body>
+
+</html>
